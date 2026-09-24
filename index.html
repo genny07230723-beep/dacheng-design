@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>大程空間設計｜室內設計・老屋翻新・新成屋規劃</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+      color: #292724;
+      background: #f7f5f0;
+      line-height: 1.8;
+    }
+
+    /* 導覽列 */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(247, 245, 240, 0.95);
+      border-bottom: 1px solid #ddd8cf;
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: #292724;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.6;
+    }
+
+    /* 首頁主視覺 */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 25px 60px;
+      background:
+        linear-gradient(rgba(40,37,32,.35), rgba(40,37,32,.35)),
+        linear-gradient(135deg, #b9ad9b, #70675c);
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .hero-small {
+      letter-spacing: 5px;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 7vw, 78px);
+      letter-spacing: 8px;
+      margin-bottom: 20px;
+    }
+
+    .hero h2 {
+      font-size: clamp(20px, 3vw, 32px);
+      font-weight: 400;
+      margin-bottom: 25px;
+    }
+
+    .hero p {
+      font-size: 17px;
+      margin-bottom: 35px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 30px;
+      margin: 6px;
+      background: #292724;
+      color: white;
+      text-decoration: none;
+      border: 1px solid #292724;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: transparent;
+      color: #292724;
+    }
+
+    .hero .btn {
+      background: white;
+      color: #292724;
+      border-color: white;
+    }
+
+    .hero .btn:hover {
+      background: transparent;
+      color: white;
+    }
+
+    /* 共用區塊 */
+    section {
+      padding: 100px 25px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 55px;
+    }
+
+    .section-title span {
+      font-size: 13px;
+      letter-spacing: 4px;
+      color: #8c8377;
+    }
+
+    .section-title h2 {
+      font-size: 36px;
+      margin-top: 8px;
+    }
+
+    /* 關於我們 */
+    .about {
+      background: white;
+    }
+
+    .about-content {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    /* 服務項目 */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      background: white;
+      padding: 45px 25px;
+      text-align: center;
+      border: 1px solid #e4dfd7;
+      transition: 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .service-number {
+      font-size: 13px;
+      color: #9b9287;
+      margin-bottom: 15px;
+    }
+
+    .service-card h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    /* 作品 */
+    .projects {
+      background: #252421;
+      color: white;
+    }
+
+    .projects .section-title span {
+      color: #aaa298;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .project-card {
+      min-height: 330px;
+      display: flex;
+      align-items: end;
+      padding: 30px;
+      background: linear-gradient(135deg, #938878, #554f47);
+    }
+
+    .project-card h3 {
+      font-size: 24px;
+    }
+
+    .project-card p {
+      color: #e0ddd8;
+      font-size: 14px;
+    }
+
+    /* 流程 */
+    .process {
+      background: white;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+    }
+
+    .process-item {
+      text-align: center;
+      padding: 25px 10px;
+    }
+
+    .process-item .number {
+      width: 55px;
+      height: 55px;
+      border: 1px solid #292724;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 20px;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      background: #dcd5ca;
+    }
+
+    .cta h2 {
+      font-size: 38px;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      margin-bottom: 30px;
+    }
+
+    /* 聯絡 */
+    .contact {
+      text-align: center;
+    }
+
+    .contact-info {
+      margin: 25px 0;
+      font-size: 17px;
+    }
+
+    footer {
+      background: #252421;
+      color: #bbb5ad;
+      text-align: center;
+      padding: 30px;
+      font-size: 13px;
+    }
+
+    /* 手機版 */
+    @media (max-width: 800px) {
+
+      nav {
+        padding: 15px 20px;
+      }
+
+      .logo {
+        font-size: 19px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero h1 {
+        letter-spacing: 3px;
+      }
+
+      .services-grid,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 75px 20px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+<header>
+  <nav>
+    <div class="logo">大程空間設計</div>
+
+    <div class="nav-links">
+      <a href="#about">關於大程</a>
+      <a href="#services">設計服務</a>
+      <a href="#projects">作品案例</a>
+      <a href="#process">服務流程</a>
+      <a href="#contact">聯絡我們</a>
+    </div>
+  </nav>
+</header>
+
+
+<!-- 首頁 -->
+<section class="hero">
+
+  <div class="hero-content">
+
+    <div class="hero-small">
+      DACHENG INTERIOR DESIGN
+    </div>
+
+    <h1>大程空間設計</h1>
+
+    <h2>
+      好看的設計，只是開始。<br>
+      好住，才是我們真正想完成的事。
+    </h2>
+
+    <p>
+      老屋翻新｜中古屋翻新｜新成屋規劃｜預售屋客變
+    </p>
+
+    <a href="#projects" class="btn">
+      看設計案例
+    </a>
+
+    <a href="#contact" class="btn">
+      預約免費初步諮詢
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- 關於 -->
+<section id="about" class="about">
+
+  <div class="container">
+
+    <div class="section-title">
+      <span>ABOUT US</span>
+      <h2>我們不只設計空間，更設計生活</h2>
+    </div>
+
+    <div class="about-content">
+
+      <p>
+        一個家真正好不好住，
+        從來不只是看完工照片漂不漂亮。
+      </p>
+
+      <br>
+
+      <p>
+        大程空間設計從屋主的生活習慣開始，
+        從格局、動線、收納、水電到施工細節，
+        把入住後真正會遇到的問題，
+        提前在設計階段想清楚。
+      </p>
+
+      <br>
+
+      <p>
+        因為我們相信，
+        <strong>好的設計不是做得最多，而是每一個地方都有理由。</strong>
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- 服務 -->
+<section id="services">
+
+  <div class="container">
+
+    <div class="section-title">
+      <span>SERVICES</span>
+      <h2>設計服務</h2>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-number">01</div>
+        <h3>老屋翻新</h3>
+        <p>
+          從屋況檢查、格局重新配置，
+          到水電、防水與施工細節，
+          重新整理老屋的生活機能。
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-number">02</div>
+        <h3>中古屋翻新</h3>
+        <p>
+          不只是換風格，
+          更重新檢視格局、動線與屋況，
+          避免入住後才發現問題。
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-number">03</div>
+        <h3>新成屋規劃</h3>
+        <p>
+          依照家庭成員與生活習慣，
+          規劃收納、動線與空間比例，
+          讓新家真正符合你的生活。
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-number">04</div>
+        <h3>預售屋客變</h3>
+        <p>
+          從建商 CAD 圖面開始，
+          提前確認格局、水電與設備位置，
+          減少交屋後重做的成本。
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- 案例 -->
+<section id="projects" class="projects">
+
+  <div class="container">
+
+    <div class="section-title">
+      <span>PROJECTS</span>
+      <h2>精選作品</h2>
+    </div>
+
+    <div class="project-grid">
+
+      <div class="project-card">
+        <div>
+          <h3>奶油木質宅</h3>
+          <p>住宅設計｜溫潤木質 × 奶油色調</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div>
+          <h3>中古屋翻新</h3>
+          <p>格局重整｜生活動線重新規劃</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div>
+          <h3>老屋新生</h3>
+          <p>老屋翻新｜機能與美感重新整理</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- 流程 -->
+<section id="process" class="process">
+
+  <div class="container">
+
+    <div class="section-title">
+      <span>PROCESS</span>
+      <h2>從需求到入住</h2>
+    </div>
+
+    <div class="process-grid">
+
+      <div class="process-item">
+        <div class="number">01</div>
+        <h3>初步諮詢</h3>
+        <p>了解房屋狀況與需求</p>
+      </div>
+
+      <div class="process-item">
+        <div class="number">02</div>
+        <h3>現場丈量</h3>
+        <p>確認尺寸與屋況</p>
+      </div>
+
+      <div class="process-item">
+        <div class="number">03</div>
+        <h3>設計規劃</h3>
+        <p>格局、動線與風格提案</p>
+      </div>
+
+      <div class="process-item">
+        <div class="number">04</div>
+        <h3>工程施工</h3>
+        <p>現場管理與進度確認</p>
+      </div>
+
+      <div class="process-item">
+        <div class="number">05</div>
+        <h3>完工交屋</h3>
+        <p>細節確認後正式入住</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CTA -->
+<section class="cta">
+
+  <div class="container">
+
+    <h2>準備開始規劃你的家了嗎？</h2>
+
+    <p>
+      不確定格局怎麼改、預算怎麼抓，或中古屋值不值得翻新？
+      可以先把你的房屋資訊告訴我們。
+    </p>
+
+    <a href="#contact" class="btn">
+      免費初步諮詢
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- 聯絡 -->
+<section id="contact" class="contact">
+
+  <div class="container">
+
+    <div class="section-title">
+      <span>CONTACT</span>
+      <h2>聯絡大程空間設計</h2>
+    </div>
+
+    <p>
+      想了解設計費用、裝修預算或預約諮詢，
+      歡迎與我們聯絡。
+    </p>
+
+    <div class="contact-info">
+
+      <p>大程空間設計</p>
+
+      <p>
+        老屋翻新・中古屋翻新・新成屋・預售屋客變
+      </p>
+
+    </div>
+
+    <a href="#" class="btn">
+      加入官方 LINE
+    </a>
+
+    <a href="#" class="btn">
+      Instagram
+    </a>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  © 2026 大程空間設計 DACHENG INTERIOR DESIGN.
+  All Rights Reserved.
+
+</footer>
+
+</body>
+</html>
